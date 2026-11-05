@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta http-equiv="Pragma" content="no-cache">
+
+<title>Session Attributes</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+margin:40px;
+
+}
+
+table{
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+td,th{
+
+border:1px solid black;
+
+padding:8px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Session Attributes</h2>
+
+<form th:action="@{/session/attributes}" method="get">
+
+Name :
+
+<input type="text"
+       name="attrib_name">
+
+<br><br>
+
+Value :
+
+<input type="text"
+       name="attrib_value">
+
+<br><br>
+
+<input type="checkbox"
+       name="attrib_remove">
+
+Remove Attribute
+
+<br><br>
+
+<input type="submit"
+       value="Update">
+
+</form>
+
+<hr>
+
+<h3>Current Session Attributes</h3>
+
+<table>
+
+<tr>
+
+<th>Name</th>
+
+<th>Value</th>
+
+</tr>
+
+<tr th:each="entry : ${attributes}">
+
+<td th:text="${entry.key}"></td>
+
+<td th:text="${entry.value}"></td>
+
+</tr>
+
+</table>
+
+<br>
+
+<a th:href="@{/session/lifecycle}">
+Back to Session Lifecycle
+</a>
+
+</body>
+
+</html>
